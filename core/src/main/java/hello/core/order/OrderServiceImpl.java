@@ -12,8 +12,9 @@ import org.springframework.stereotype.Component;
 public class OrderServiceImpl implements  OrderService{
 
     //철저하게 인터페이스에만 의존하고 있음
-    private final MemberRepository memberRepository;//저장소 //final변수는 무조건 값이 할당 되어야함 -> 생성자 주입
+    private final MemberRepository memberRepository;//저장소 //final변수는 무조건 값이 할당 되어야함(변경 못하게) -> 생성자 주입
     private final DiscountPolicy discountPolicy;//할인정책
+
     // 생성자 주입
    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy){
