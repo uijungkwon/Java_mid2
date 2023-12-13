@@ -13,7 +13,7 @@ public class OrderServiceImpTest {
     @Test
     void createOrder(){
         MemoryMemberRepository memberRepository = new MemoryMemberRepository();
-        memberRepository.save(new Member(1L, "name", Grade.VIP));
+        memberRepository.save(new Member(1L, "name", Grade.VIP));//테스트 위해 회원 가입 진행
 
         OrderServiceImpl orderService = new OrderServiceImpl(new MemoryMemberRepository(), new FixDiscountPolicy());
         Order order = orderService.createOrder(1L, "itemA", 10000);
