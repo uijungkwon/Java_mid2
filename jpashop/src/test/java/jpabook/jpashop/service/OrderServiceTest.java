@@ -75,7 +75,7 @@ public class OrderServiceTest {
         Long orderId = orderService.order(member.getId(), item.getId(), orderCount);
 
         //when
-        orderService.cancleOrder(orderId);
+        orderService.cancelOrder(orderId);
         //then - 재고가 복구되었는지 검증
         Order getOrder = orderRepository.findOne(orderId);
 
