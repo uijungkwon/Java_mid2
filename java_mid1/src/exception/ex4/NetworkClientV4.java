@@ -1,26 +1,23 @@
-package exception.ex2;
-
-public class NetworkClientV2 {
+package exception.ex4;
+import exception.ex4.exception.ConnectExceptionV4;
+import exception.ex4.exception.SendExceptionV4;
+public class NetworkClientV4 {
     private final String address;
     public boolean connectError;
     public boolean sendError;
-    public NetworkClientV2(String address) {
+    public NetworkClientV4(String address) {
         this.address = address;
     }
-    public void connect() throws NetworkClientExceptionV2 {
+    public void connect() {
         if (connectError) {
-            throw new NetworkClientExceptionV2("connectError", address + " 서버 연결 실패");
+            throw new ConnectExceptionV4(address, address + " 서버 연결 실패");
         }
-        //연결 성공
         System.out.println(address + " 서버 연결 성공");
     }
-    public void send(String data) throws NetworkClientExceptionV2 {
+    public void send(String data) {
         if (sendError) {
-            //전혀 생각하지 못한 다른 예외가 발생했다고 가정
-
-            throw new NetworkClientExceptionV2("connectError", address + " 서버 연결 실패");
+            throw new SendExceptionV4(data, address + " 서버에 데이터 전송 실패: " +data);
         }
-        //전송 성공
         System.out.println(address + " 서버에 데이터 전송: " + data);
     }
     public void disconnect() {
@@ -35,5 +32,4 @@ public class NetworkClientV2 {
         }
     }
 }
-    
 
